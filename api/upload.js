@@ -9,7 +9,7 @@ const setCorsHeaders = (res) => {
     ? `https://${process.env.VERCEL_URL}`
     : process.env.NODE_ENV === 'production'
     ? 'https://dylanseals.org'
-    : '*';
+    : 'http://localhost:3000'; // Changed from '*' for credentials support
     
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', origin);
@@ -33,9 +33,10 @@ const handleUpload = async (req, res) => {
       await connectDB();
 
       // Handle multipart form data with multer
-      upload.array('media', 10)(req, res, async (err) => {
+      upload.array('files', 10)(req, res, async (err) => {
         if (err) {
-          return res.status(500).json({ error: err.message });
+          console.error('Upload error:', err);
+          return res.status(500).json({ error: 'File upload failed' });
         }
 
         const { entryId, title, category, contentType, content } = req.body;

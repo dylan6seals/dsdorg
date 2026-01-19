@@ -12,8 +12,13 @@ const verifyToken = (req) => {
   
   const token = authHeader.substring(7); // Remove 'Bearer ' prefix
   
+  if (!process.env.JWT_SECRET) {
+    console.error('JWT_SECRET environment variable not set!');
+    return null;
+  }
+  
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key');
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     return decoded;
   } catch (error) {
     return null;

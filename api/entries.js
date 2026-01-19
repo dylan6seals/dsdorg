@@ -9,7 +9,7 @@ const setCorsHeaders = (res) => {
     ? `https://${process.env.VERCEL_URL}`
     : process.env.NODE_ENV === 'production'
     ? 'https://dylanseals.org'
-    : '*';
+    : 'http://localhost:3000'; // Changed from '*' for credentials support
     
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', origin);
@@ -60,14 +60,14 @@ const handleRequest = async (req, res) => {
           return res.status(404).json({ error: 'Entry not found' });
         }
 
-        // Get adjacent entries for navigation
-        const prevEntry = await Entry.findOne({ _id: { $lt: entry._id } })
-          .sort({ _id: -1 })
+        // Get adjacent entries for navigation (using createdAt for proper chronological order)
+        const prevEntry = await Entry.findOne({ createdAt: { $lt: entry.createdAt } })
+          .sort({ createdAt: -1 })
           .limit(1)
           .select('slug title');
         
-        const nextEntry = await Entry.findOne({ _id: { $gt: entry._id } })
-          .sort({ _id: 1 })
+        const nextEntry = await Entry.findOne({ createdAt: { $gt: entry.createdAt } })
+          .sort({ createdAt: 1 })
           .limit(1)
           .select('slug title');
 
@@ -145,9 +145,10 @@ const handleRequest = async (req, res) => {
     return res.status(405).json({ error: 'Method not allowed' });
   } catch (error) {
     console.error('API Error:', error);
-    return res.status(500).json({ error: error.message });
+    // Don't expose internal error details to client
+    return res.status(500).json({ error: 'An error occurred processing your request' });
   }
 };
 
-// Export with optional auth wrapper (attaches user if authenticated)
+// Export with optional auth - GET is public, POST/PUT/DELETE check auth inside handler
 module.exports = optionalAuth(handleRequest);

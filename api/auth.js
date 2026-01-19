@@ -7,7 +7,7 @@ const setCorsHeaders = (res) => {
     ? `https://${process.env.VERCEL_URL}`
     : process.env.NODE_ENV === 'production'
     ? 'https://dylanseals.org'
-    : '*';
+    : 'http://localhost:3000'; // Changed from '*' for credentials support
     
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', origin);
@@ -57,9 +57,14 @@ module.exports = async (req, res) => {
       }
 
       if (isValid) {
+        if (!process.env.JWT_SECRET) {
+          console.error('JWT_SECRET environment variable not set!');
+          return res.status(500).json({ error: 'Server configuration error' });
+        }
+        
         const token = jwt.sign(
           { admin: true, timestamp: Date.now() },
-          process.env.JWT_SECRET || 'your-secret-key',
+          process.env.JWT_SECRET,
           { expiresIn: '24h' }
         );
 

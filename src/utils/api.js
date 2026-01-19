@@ -82,26 +82,4 @@ export const uploadFiles = async (formData) => {
   });
 };
 
-/**
- * Environment validation helper
- */
-export const validateEnvironment = () => {
-  const required = [
-    'MONGODB_URI',
-    'JWT_SECRET',
-    'CLOUDINARY_CLOUD_NAME',
-    'CLOUDINARY_API_KEY',
-    'CLOUDINARY_API_SECRET'
-  ];
-  
-  const missing = required.filter(key => !process.env[key]);
-  
-  if (missing.length > 0) {
-    console.warn('Missing environment variables:', missing);
-    return false;
-  }
-  
-  return true;
-};
-
 export default api;
