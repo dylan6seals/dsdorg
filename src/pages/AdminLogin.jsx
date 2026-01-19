@@ -21,7 +21,8 @@ function AdminLogin() {
         navigate('/admin');
       }
     } catch (error) {
-      setError(error.response?.data?.error || 'Incorrect password');
+      const errorMessage = error.response?.data?.error || error.message || 'Incorrect password';
+      setError(typeof errorMessage === 'string' ? errorMessage : 'Authentication failed');
       setLoading(false);
     }
   };
