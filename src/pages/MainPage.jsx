@@ -83,11 +83,11 @@ function MainPage() {
   return (
     <div className="container">
       <header className="main-header">
-        <h1 className="site-title">dsd.org</h1>
         <div className="site-meta">
           <span className="last-updated">last updated: {entries.length > 0 ? formatDate(entries[0].createdAt) : 'never'}</span>
-          <span className="divider">|</span>
-          <span className="entry-count">{entries.length} entries</span>
+        </div>
+        <div className="site-stats">
+          <span className="entry-count">{entries.length} total</span>
         </div>
       </header>
 
@@ -104,7 +104,7 @@ function MainPage() {
       <div className="filter-section">
         <div className="filter-label">filter by:</div>
         <div className="category-filters">
-          {['all', 'text', 'image', 'video', 'audio', 'mixed', 'link', 'code', 'other'].map(cat => (
+          {['all', 'text', 'image', 'video'].map(cat => (
             <button
               key={cat}
               className={`filter-btn ${currentFilter === cat ? 'active' : ''}`}
@@ -130,7 +130,7 @@ function MainPage() {
         ) : error ? (
           <div className="error-state">{error}</div>
         ) : filteredEntries.length === 0 ? (
-          <div className="no-results">no entries found</div>
+          <div className="no-results"></div>
         ) : (
           years.map(year => (
             <div key={year} className="year-group" id={`year-${year}`}>

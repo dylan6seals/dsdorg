@@ -196,11 +196,6 @@ function AdminEdit() {
                 <option value="text">text</option>
                 <option value="image">image</option>
                 <option value="video">video</option>
-                <option value="audio">audio</option>
-                <option value="mixed">mixed</option>
-                <option value="link">link</option>
-                <option value="code">code</option>
-                <option value="other">other</option>
               </select>
             </div>
 

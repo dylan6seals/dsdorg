@@ -15,7 +15,7 @@ const entrySchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
-    enum: ['text', 'image', 'video', 'audio', 'mixed', 'link', 'code', 'other'],
+    enum: ['text', 'image', 'video'],
     default: 'text'
   },
   contentType: {
