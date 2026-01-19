@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>admin - dsd.org</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <div class="admin-container">
+    <header class="admin-header">
+      <h1>admin dashboard</h1>
+      <div class="admin-actions">
+        <a href="/" class="btn">view site</a>
+        <a href="/admin/new" class="btn btn-primary">new entry</a>
+        <a href="/admin/logout" class="btn">logout</a>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <div class="entries-header">
+        <h2>all entries</h2>
+        <div class="entry-stats" id="entry-stats">
+          <span>loading...</span>
+        </div>
+      </div>
+
+      <div class="entries-table" id="entries-table">
+        <div class="loading">loading entries...</div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>

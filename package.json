@@ -1,0 +1,31 @@
+{
+  "name": "dsdorg",
+  "version": "1.0.0",
+  "description": "personal life portfolio website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dylan6seals/dsdorg.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dylan6seals/dsdorg/issues"
+  },
+  "homepage": "https://github.com/dylan6seals/dsdorg#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "express-session": "^1.18.2",
+    "marked": "^17.0.1",
+    "multer": "^2.0.2",
+    "sanitize-html": "^2.17.0",
+    "sqlite3": "^5.1.7"
+  }
+}

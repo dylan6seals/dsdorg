@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">new entry - admin - dsd.org</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <div class="admin-container">
+    <header class="admin-header">
+      <h1 id="page-heading">new entry</h1>
+      <div class="admin-actions">
+        <a href="/admin" class="btn">← back to dashboard</a>
+        <a href="/" class="btn">view site</a>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <form id="entry-form" class="entry-form" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="title">title *</label>
+          <input type="text" id="title" name="title" required>
+        </div>
+
+        <div class="form-group">
+          <label for="category">category *</label>
+          <select id="category" name="category" required>
+            <option value="text">text</option>
+            <option value="image">image</option>
+            <option value="video">video</option>
+            <option value="audio">audio</option>
+            <option value="mixed">mixed</option>
+            <option value="link">link</option>
+            <option value="code">code</option>
+            <option value="other">other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="content-type">content type</label>
+          <select id="content-type" name="content_type">
+            <option value="markdown">markdown</option>
+            <option value="html">html</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="content">content</label>
+          <textarea id="content" name="content" rows="15" placeholder="write your content here..."></textarea>
+          <div class="help-text">
+            supports markdown: # headers, **bold**, *italic*, [links](url), `code`, etc.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="media">media files</label>
+          <input type="file" id="media" name="media" multiple accept="image/*,video/*,audio/*">
+          <div class="help-text">
+            you can upload multiple files at once (max 50mb per file)
+          </div>
+          <div id="file-preview" class="file-preview"></div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="submit-btn">
+            create entry
+          </button>
+          <button type="button" class="btn" onclick="window.location.href='/admin'">
+            cancel
+          </button>
+          <button type="button" class="btn btn-danger" id="delete-btn" style="display: none;">
+            delete entry
+          </button>
+        </div>
+
+        <div id="form-message" class="form-message"></div>
+      </form>
+    </main>
+  </div>
+
+  <script src="/js/admin-edit.js"></script>
+</body>
+</html>
