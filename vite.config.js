@@ -9,7 +9,5 @@ export default defineConfig({
   },
   server: {
     port: 3000
-    // Note: API routes won't work in pure Vite dev mode
-    // Use 'vercel dev' instead to test API endpoints locally
   }
 });

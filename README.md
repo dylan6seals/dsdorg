@@ -85,12 +85,19 @@ CLOUDINARY_API_KEY=your-api-key
 CLOUDINARY_API_SECRET=your-api-secret
 ```
 
-4. **Start development server**
+4. **Install Vercel CLI (first time only)**
+```bash
+npm install
+```
+
+5. **Start development server**
 ```bash
 npm run dev
 ```
 
 The site will be available at `http://localhost:3000`
+
+> **Note**: The development server uses `vercel dev` to properly route API requests to serverless functions. Running `vite` directly will not work with the `/api/*` endpoints.
 
 ## 📝 Usage
 

@@ -22,5 +22,8 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ]
+  ],
+  "env": {
+    "_comment": "The following environment variables must be set in Vercel dashboard: MONGODB_URI, ADMIN_PASSWORD (bcrypt hashed), JWT_SECRET, CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET, NODE_ENV (production)"
+  }
 }

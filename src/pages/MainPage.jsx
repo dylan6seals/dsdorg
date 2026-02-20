@@ -130,7 +130,11 @@ function MainPage() {
         ) : error ? (
           <div className="error-state">{error}</div>
         ) : filteredEntries.length === 0 ? (
-          <div className="no-results"></div>
+          <div className="no-results">
+            {entries.length === 0 
+              ? "No entries yet. Click 'admin' to create your first entry!" 
+              : "No entries match your search or filter."}
+          </div>
         ) : (
           years.map(year => (
             <div key={year} className="year-group" id={`year-${year}`}>

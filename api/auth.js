@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { validateEnv } = require('./config/validate-env');
 
 // Set CORS headers helper
 const setCorsHeaders = (res) => {
@@ -28,6 +29,8 @@ module.exports = async (req, res) => {
 
   if (req.method === 'POST') {
     try {
+      validateEnv();
+      
       const { password } = req.body;
       
       if (!password) {

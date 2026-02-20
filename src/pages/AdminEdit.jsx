@@ -45,8 +45,8 @@ function AdminEdit() {
 
   const loadEntry = async () => {
     try {
-      const response = await api.get('/entries');
-      const entry = response.data.find(e => e._id === id);
+      const response = await api.get(`/entries?id=${id}`);
+      const entry = response.data;
       if (entry) {
         setFormData({
           title: entry.title,

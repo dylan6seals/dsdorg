@@ -2,6 +2,7 @@ const { upload } = require('./config/cloudinary');
 const Entry = require('./models/Entry');
 const connectDB = require('./config/db');
 const { requireAuth } = require('./middleware/auth');
+const { validateEnv } = require('./config/validate-env');
 
 // Set CORS headers helper
 const setCorsHeaders = (res) => {
@@ -30,6 +31,7 @@ const handleUpload = async (req, res) => {
 
   if (req.method === 'POST') {
     try {
+      validateEnv();
       await connectDB();
 
       // Handle multipart form data with multer

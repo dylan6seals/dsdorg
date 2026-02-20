@@ -1,6 +1,7 @@
 const Entry = require('../models/Entry');
 const connectDB = require('../config/db');
 const { requireAuth, optionalAuth } = require('../middleware/auth');
+const { validateEnv } = require('./config/validate-env');
 const sanitizeHtml = require('sanitize-html');
 
 // Set CORS headers helper
@@ -47,11 +48,21 @@ const handleRequest = async (req, res) => {
   }
 
   try {
+    validateEnv();
     await connectDB();
 
     // GET requests don't need authentication
     if (req.method === 'GET') {
-      const { slug, search, category } = req.query;
+      const { slug, search, category, id } = req.query;
+
+      // Get single entry by ID
+      if (id) {
+        const entry = await Entry.findById(id);
+        if (!entry) {
+          return res.status(404).json({ error: 'Entry not found' });
+        }
+        return res.status(200).json(entry);
+      }
 
       // Get single entry by slug
       if (slug) {

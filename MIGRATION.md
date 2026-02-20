@@ -1,5 +1,7 @@
 # Migration from Vanilla JS to MERN Stack
 
+> **📜 HISTORICAL REFERENCE**: This document describes the completed migration from vanilla JavaScript to MERN stack. It is kept for historical reference only. For current documentation, see [README.md](README.md), [API_DOCUMENTATION.md](API_DOCUMENTATION.md), and [DEPLOYMENT.md](DEPLOYMENT.md).
+
 This document details the migration from the original vanilla JavaScript/MongoDB implementation to the modern MERN stack architecture.
 
 ## Overview
