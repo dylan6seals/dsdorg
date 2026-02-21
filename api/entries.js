@@ -1,6 +1,6 @@
-const Entry = require('../models/Entry');
-const connectDB = require('../config/db');
-const { requireAuth, optionalAuth } = require('../middleware/auth');
+const Entry = require('./models/Entry');
+const connectDB = require('./config/db');
+const { requireAuth, optionalAuth } = require('./middleware/auth');
 const { validateEnv } = require('./config/validate-env');
 const sanitizeHtml = require('sanitize-html');
 
