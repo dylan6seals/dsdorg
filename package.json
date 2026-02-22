@@ -2,7 +2,6 @@
   "name": "dsdorg",
   "version": "1.0.0",
   "description": "personal life portfolio website",
-  "main": "server.js",
   "scripts": {
     "dev": "vercel dev",
     "build": "vite build",
